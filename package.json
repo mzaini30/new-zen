@@ -1,0 +1,16 @@
+{
+  "name": "~TODO~",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build && workbox generateSW workbox-config.cjs && node ubahQuery.js",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "next",
+    "replace": "^1.2.1",
+    "svelte": "^3.34.0",
+    "workbox-cli": "^6.1.5"
+  },
+  "type": "module"
+}
