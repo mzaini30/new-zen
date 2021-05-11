@@ -10,7 +10,9 @@
     "@sveltejs/adapter-static": "^1.0.0-next.9",
     "@sveltejs/kit": "next",
     "replace": "^1.2.1",
+    "sass": "^1.32.12",
     "svelte": "^3.34.0",
+    "svelte-preprocess": "^4.7.3",
     "workbox-cli": "^6.1.5"
   },
   "type": "module"

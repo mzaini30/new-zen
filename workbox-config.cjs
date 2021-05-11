@@ -1,7 +1,7 @@
 module.exports = {
 	globDirectory: 'build/',
 	globPatterns: [
-		'**/*.{css,js,html}'
+		'**/*.{css,js,html.otf}'
 	],
 	ignoreURLParametersMatching: [
 		/^utm_/,
