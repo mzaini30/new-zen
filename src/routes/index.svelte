@@ -2,10 +2,6 @@
 	<title>Zen</title>
 </svelte:head>
 
-<div class="p-3">
-	<h1 class="instagram">Zen</h1>
-</div>
-
 <div class="story d-flex">
 	{#each listGambar as item, index}
 		<a href="/" class="link-story">
@@ -16,23 +12,41 @@
 	<div class="link-story">&nbsp;</div>
 </div>
 
+<hr class="m-0 garis">
+
+<div class="konten">
+	{#each listGambar as item, index}
+		<a href="" class="d-block">
+			<div class="judul p-3 pb-0 d-flex">
+				<div class="">
+					<img src="/logo.png" alt="" class="icon">
+				</div>
+				<div class="">
+					<p class="caption p-1 ps-2">{item.caption}</p>
+				</div>
+			</div>
+
+			<img src="/contoh/{item.gambar}" alt="" class="gambar">
+		</a>
+	{/each}
+</div>
+
 <script>
 	const listGambar = [
-		{caption: 'Hello World', gambar: '57244247.png'},
-		{caption: 'Bagaimana Kabarmu?', gambar: 'gnukoyvz5xlacuwdymrf.png'},
-		{caption: 'Kehidupan yang Baik adalah Kehidupan yang Bagus', gambar: 'medium_logo-transistor.png'},
-		{caption: 'Satu Lagi yang Bagus', gambar: 'p3nn57r52krvpdieblta.png'},
-		{caption: 'Tebal atau Miring?', gambar: 'QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png'},
-		{caption: 'Excalibur, Suatu Legenda', gambar: 'socialmedia.png'},
+		{caption: 'Hello World', gambar: '57244247.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+		{caption: 'Bagaimana Kabarmu?', gambar: 'gnukoyvz5xlacuwdymrf.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+		{caption: 'Kehidupan yang Baik adalah Kehidupan yang Bagus', gambar: 'medium_logo-transistor.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+		{caption: 'Satu Lagi yang Bagus', gambar: 'p3nn57r52krvpdieblta.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+		{caption: 'Tebal atau Miring?', gambar: 'QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+		{caption: 'Excalibur, Suatu Legenda', gambar: 'socialmedia.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
 	]
 </script>
 
 <style lang="scss">
+	$gray: #eaeaea;
+
 	@font-face {
 		src: url('/Fontspring-DEMO-blue_vinyl_regular_ps_ot.otf');
-		font-family: Instagram;
-	}
-	.instagram {
 		font-family: Instagram;
 	}
 
@@ -52,6 +66,7 @@
 		border-radius: 50%;
 		border: 1px solid gray;
 		background-position: center;
+		background-size: contain;
 	}
 	.teks-story {
 		/*background: blue;*/
@@ -73,5 +88,40 @@
 			}
 		}
 	}
-	@include tanpa-scroll('.story')
+	@include tanpa-scroll('.story');
+
+	.garis {
+		$warna: gray;
+		color: $warna;
+		background: $warna;
+	}
+
+	.konten {
+		a {
+			text-decoration: none !important;
+			color: inherit !important;
+		}
+		.judul {
+			.icon {
+				$ukuran: 30px;
+				width: $ukuran;
+				height: auto;
+			}
+			.caption {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				// background: green;
+				overflow: hidden;
+				width: calc(100vw - 80px);
+			}
+		}
+
+		.gambar {
+			$border: 1px solid $gray;
+			width: 100%;
+			height: auto;
+			border-top: $border;
+			border-bottom: $border;
+		}
+	}
 </style>
