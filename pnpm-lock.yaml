@@ -1,12 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@sveltejs/adapter-static': ^1.0.0-next.9
   '@sveltejs/kit': next
   replace: ^1.2.1
   svelte: ^3.34.0
   workbox-cli: ^6.1.5
 
 devDependencies:
+  '@sveltejs/adapter-static': 1.0.0-next.9
   '@sveltejs/kit': 1.0.0-next.104_svelte@3.38.2
   replace: 1.2.1
   svelte: 3.38.2
@@ -1147,6 +1149,10 @@ packages:
       magic-string: 0.25.7
     dev: true
 
+  /@sveltejs/adapter-static/1.0.0-next.9:
+    resolution: {integrity: sha512-yqZ+4dzi+2+2jDPHCrI7WrLdXyQ/0U56a7aFdepmodpvpxhazF203D1ez+AtTo27FjMmHjfI+q0O2FivUOosxg==}
+    dev: true
+
   /@sveltejs/kit/1.0.0-next.104_svelte@3.38.2:
     resolution: {integrity: sha512-1ww5NvpGYJdKXR4bfxo04AM4izcJwTziFIVrImq3jqS2b4d8l3KfrJOqgv+e07RvW/WakrCRPAyZzeHpXLdkZg==}
     engines: {node: '>= 12.17.0'}
@@ -1154,17 +1160,17 @@ packages:
     peerDependencies:
       svelte: ^3.38.2
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.10_svelte@3.38.2+vite@2.2.4
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.10_svelte@3.38.2+vite@2.3.0
       cheap-watch: 1.0.3
       sade: 1.7.4
       svelte: 3.38.2
-      vite: 2.2.4
+      vite: 2.3.0
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.10_svelte@3.38.2+vite@2.2.4:
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.10_svelte@3.38.2+vite@2.3.0:
     resolution: {integrity: sha512-ImvxbhPePm2hWNTKBSA3LHAYGwiEjHjvvgfPLXm4R87sfZ+BMXql9jBmDpzUC/URBLT4BB3Jxos/i523qkJBHg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -1180,7 +1186,7 @@ packages:
       source-map: 0.7.3
       svelte: 3.38.2
       svelte-hmr: 0.14.3_svelte@3.38.2
-      vite: 2.2.4
+      vite: 2.3.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -1867,8 +1873,8 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /esbuild/0.9.7:
-    resolution: {integrity: sha512-VtUf6aQ89VTmMLKrWHYG50uByMF4JQlVysb8dmg6cOgW8JnFCipmz7p+HNBl+RR3LLCuBxFGVauAe2wfnF9bLg==}
+  /esbuild/0.11.20:
+    resolution: {integrity: sha512-QOZrVpN/Yz74xfat0H6euSgn3RnwLevY1mJTEXneukz1ln9qB+ieaerRMzSeETpz/UJWsBMzRVR/andBht5WKw==}
     hasBin: true
     requiresBuild: true
     dev: true
@@ -3790,12 +3796,12 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/2.2.4:
-    resolution: {integrity: sha512-vnIwSNci+phFMp6krhy+FbYzKL0R67Sdt9mVZ96S27AewrApSJjTqncJcalk8sf60BgcbW4+1C6DFIWkxquO9g==}
+  /vite/2.3.0:
+    resolution: {integrity: sha512-gsCy0t3X9nGGYDoNiE2NJgYq6BPxrtKeo6FkpMXdMvtUluYxnRhl7xfpHaYDmQLCnMbYTWhvWS1L/Hpw/V9L5w==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      esbuild: 0.9.7
+      esbuild: 0.11.20
       postcss: 8.2.15
       resolve: 1.20.0
       rollup: 2.47.0
