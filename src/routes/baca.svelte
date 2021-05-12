@@ -68,7 +68,9 @@
 	import marked from 'marked'
 	import {page} from '$app/stores'
 	import {sql, konten} from '$lib/api'
-	import {highlight} from 'highlight.js'
+	import pkg from 'highlight.js'
+	const {highlight} = pkg
+	// import {highlight} from 'highlight.js'
 
 	marked.setOptions({
 		breaks: true,
