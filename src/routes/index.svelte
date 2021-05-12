@@ -4,7 +4,7 @@
 
 <div class="story d-flex">
 	{#each postinganAcak as item, index}
-		<a href="/baca/?slug={item.slug}" class="link-story">
+		<a href="/baca?slug={item.slug}" class="link-story">
 			<span class="gambar-story d-block" style="background-image: url('{item.gambar}');"></span>
 			<p class="text-center teks-story">{item.judul}</p>
 		</a>		
@@ -16,7 +16,7 @@
 
 <div class="konten">
 	{#each postinganBaru as item, index}
-		<a href="/baca/?slug={item.slug}" class="d-block">
+		<a href="/baca?slug={item.slug}" class="d-block">
 			<div class="judul p-3 pb-0 d-flex">
 				<div class="">
 					<img src="/logo.png" alt="" class="icon">
