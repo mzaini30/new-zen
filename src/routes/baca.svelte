@@ -20,7 +20,7 @@
 		{#each komentarnya as item, index}
 			<div class="d-flex">
 				<div class="bagian-gambar flex-shrink-0">
-					<img src={gravatar.url(item.email)} alt="" class="d-block mb-3">
+					<img src={gravatar.url(item.email, {}, true)} alt="" class="d-block mb-3">
 				</div>
 				<div class="bagian-komentar flex-grow-1">
 					<p class="ps-3">
