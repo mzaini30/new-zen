@@ -3,10 +3,10 @@
 </svelte:head>
 
 <div class="story d-flex">
-	{#each listGambar as item, index}
-		<a href="/" class="link-story">
-			<span class="gambar-story d-block" style="background-image: url('/contoh/{item.gambar}');"></span>
-			<p class="text-center teks-story">{item.caption}</p>
+	{#each postinganAcak as item, index}
+		<a href="/baca/?slug={item.slug}" class="link-story">
+			<span class="gambar-story d-block" style="background-image: url('{item.gambar}');"></span>
+			<p class="text-center teks-story">{item.judul}</p>
 		</a>		
 	{/each}
 	<div class="link-story">&nbsp;</div>
@@ -15,18 +15,18 @@
 <hr class="m-0 garis">
 
 <div class="konten">
-	{#each listGambar as item, index}
-		<a href="/baca/?slug=baca-aja" class="d-block">
+	{#each postinganBaru as item, index}
+		<a href="/baca/?slug={item.slug}" class="d-block">
 			<div class="judul p-3 pb-0 d-flex">
 				<div class="">
 					<img src="/logo.png" alt="" class="icon">
 				</div>
 				<div class="">
-					<p class="caption p-1 ps-2"><strong>{item.caption}</strong></p>
+					<p class="caption p-1 ps-2"><strong>{item.judul}</strong></p>
 				</div>
 			</div>
 
-			<img src="/contoh/{item.gambar}" alt="" class="gambar">
+			<img src="{item.gambar}" alt="" class="gambar">
 
 			<p class="p-3 pb-0 deskripsi">{item.deskripsi}</p>
 		</a>
@@ -34,14 +34,42 @@
 </div>
 
 <script>
-	const listGambar = [
-		{caption: 'Hello World', gambar: '57244247.png', deskripsi: 'Main sepeda'},
-		{caption: 'Bagaimana Kabarmu?', gambar: 'gnukoyvz5xlacuwdymrf.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-		{caption: 'Kehidupan yang Baik adalah Kehidupan yang Bagus', gambar: 'medium_logo-transistor.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-		{caption: 'Satu Lagi yang Bagus', gambar: 'p3nn57r52krvpdieblta.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-		{caption: 'Tebal atau Miring?', gambar: 'QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-		{caption: 'Excalibur, Suatu Legenda', gambar: 'socialmedia.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	]
+	// const listGambar = [
+	// 	{caption: 'Hello World', gambar: '57244247.png', deskripsi: 'Main sepeda'},
+	// 	{caption: 'Bagaimana Kabarmu?', gambar: 'gnukoyvz5xlacuwdymrf.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+	// 	{caption: 'Kehidupan yang Baik adalah Kehidupan yang Bagus', gambar: 'medium_logo-transistor.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+	// 	{caption: 'Satu Lagi yang Bagus', gambar: 'p3nn57r52krvpdieblta.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+	// 	{caption: 'Tebal atau Miring?', gambar: 'QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+	// 	{caption: 'Excalibur, Suatu Legenda', gambar: 'socialmedia.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
+	// ]
+
+	let postinganBaru = [{judul: '', slug: '', gambar: '', deskripsi: ''}]
+	let postinganAcak = [{judul: '', slug: '', gambar: ''}]
+
+	import {sql, konten} from '$lib/api'
+
+	import axios from 'axios'
+	import qs from 'qs'
+
+	async function ambilPostinganBaru(){
+		let data = await axios.post(sql, qs.stringify({
+			id: konten,
+			kunci: 'ambil-semua'
+		}))
+		data = data.data
+		postinganBaru = data
+	}
+	ambilPostinganBaru()
+
+	async function ambilPostinganAcak(){
+		let data = await axios.post(sql, qs.stringify({
+			id: konten,
+			kunci: 'acak'
+		}))
+		data = data.data
+		postinganAcak = data
+	}
+	ambilPostinganAcak()
 </script>
 
 <style lang="scss">

@@ -7,6 +7,7 @@ specifiers:
   axios: ^0.21.1
   embed-youtube: ^1.0.0
   gravatar: ^1.8.1
+  highlight.js: ^10.7.2
   kumpulan-tools: ^1.0.0
   marked: ^2.0.3
   qs: ^6.10.1
@@ -23,6 +24,7 @@ devDependencies:
   axios: 0.21.1
   embed-youtube: 1.0.0
   gravatar: 1.8.1
+  highlight.js: 10.7.2
   kumpulan-tools: 1.0.0
   marked: 2.0.3
   qs: 6.10.1
@@ -2346,6 +2348,10 @@ packages:
 
   /hash-sum/2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
+    dev: true
+
+  /highlight.js/10.7.2:
+    resolution: {integrity: sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg==}
     dev: true
 
   /hosted-git-info/2.8.9:

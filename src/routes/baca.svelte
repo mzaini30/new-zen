@@ -1,28 +1,29 @@
 <svelte:head>
-	<title>Baca Artikel</title>
+	<title>{tulisan.judul}</title>
 	<link rel="stylesheet" href="/agate.min.css">
 </svelte:head>
 
-<img src="/contoh/QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png" alt="" class="gambar">
+<img src={tulisan.gambar} alt="" class="gambar">
 
 <div class="konten p-3 pb-0">
-	<h1>Ini Adalah Judulnya</h1>
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe tenetur ex maiores sed magni sunt aliquam exercitationem repudiandae odit eaque optio, unde voluptas nemo expedita, perferendis. Id perspiciatis explicabo eveniet?</p>
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe tenetur ex maiores sed magni sunt aliquam exercitationem repudiandae odit eaque optio, unde voluptas nemo expedita, perferendis. Id perspiciatis explicabo eveniet?</p>
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe tenetur ex maiores sed magni sunt aliquam exercitationem repudiandae odit eaque optio, unde voluptas nemo expedita, perferendis. Id perspiciatis explicabo eveniet?</p>
+	<h1>{tulisan.judul}</h1>
+	<p><em>{tulisan.tanggal}</em></p>
+	<div class="isi">
+		{@html yt(marked(tulisan.isi))}
+	</div>
 </div>
 
 <hr class="gray">
 
 <div class="komentar p-3 pt-2 pb-0">
-	{#each Array(10) as item, index}
+	{#each komentarnya as item, index}
 		<div class="d-flex">
 			<div class="">
 				<img src="/logo.png" alt="" class="">
 			</div>
 			<div class="bagian-komentar">
 				<p class="ps-3">
-					<a href="/" rel="nofollow" class="">Zen</a>
+					<a href={item.blog} rel="nofollow" class="">Zen</a>
 					Bagus ini tulisannya. Bakal menjadi bagus lagi kalau...
 				</p>
 			</div>
@@ -37,25 +38,61 @@
 	<form action="">
 		<div class="mb-3">
 			<label for="">Nama</label>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control" required>
 		</div>
 		<div class="mb-3">
 			<label for="">Email</label>
-			<input type="email" class="form-control">
+			<input type="email" class="form-control" required>
 		</div>
 		<div class="mb-3">
 			<label for="">Blog</label>
-			<input type="url" class="form-control">
+			<input type="text" class="form-control" required>
 		</div>
 		<div class="mb-3">
-			<label for="">Komentar <em>(baris baru akan dihapus)</em></label>
-			<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+			<label for="">Komentar <em>(enter diabaikan)</em></label>
+			<textarea name="" id="" cols="30" rows="10" class="form-control" required></textarea>
 		</div>
 		<div class="mb-3">
 			<input type="submit" class="btn btn-success" value="Kirim">
 		</div>
 	</form>
 </div>
+
+<script>
+	let tulisan = {judul: '', isi: '', tanggal: '', gambar: ''}
+
+	import axios from 'axios'
+	import qs from 'qs'
+	import {tanggal, slug} from 'kumpulan-tools'
+	import yt from 'embed-youtube'
+	import marked from 'marked'
+	import {page} from '$app/stores'
+	import {sql, konten} from '$lib/api'
+	import {highlight} from 'highlight.js'
+
+	marked.setOptions({
+		breaks: true,
+		highlight: function(code, lang){
+			if (lang == ""){
+				lang = "javascript"
+			}
+			return highlight(lang, code).value
+		}
+	})
+
+	async function dapatkanTulisan(){
+		let data = await axios.post(sql, qs.stringify({
+			id: konten,
+			kunci: 'ambil',
+			slug: $page.query.get('slug')
+		}))
+		data = data.data
+		tulisan = data[0]
+	}
+	dapatkanTulisan()
+
+	let komentarnya = [{nama: '', email: '', blog: '', komentar: ''}]
+</script>
 
 <style lang="scss">
 	$gray: #eaeaea;

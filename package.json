@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "embed-youtube": "^1.0.0",
     "gravatar": "^1.8.1",
+    "highlight.js": "^10.7.2",
     "kumpulan-tools": "^1.0.0",
     "marked": "^2.0.3",
     "qs": "^6.10.1",
