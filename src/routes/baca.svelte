@@ -155,6 +155,11 @@
 		background: gray;
 	}
 
+	.konten .isi :global(img){
+		display: block;
+		margin: auto;
+	}
+
 	.komentar {
 		img {
 			width: 40px;
