@@ -9,6 +9,13 @@
   "devDependencies": {
     "@sveltejs/adapter-static": "^1.0.0-next.9",
     "@sveltejs/kit": "next",
+    "ambil-gambar": "^1.0.0",
+    "axios": "^0.21.1",
+    "embed-youtube": "^1.0.0",
+    "gravatar": "^1.8.1",
+    "kumpulan-tools": "^1.0.0",
+    "marked": "^2.0.3",
+    "qs": "^6.10.1",
     "replace": "^1.2.1",
     "sass": "^1.32.12",
     "svelte": "^3.34.0",

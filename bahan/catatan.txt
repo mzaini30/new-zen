@@ -1,0 +1,6 @@
+judul
+slug
+gambar
+deskripsi (190 karakter)
+isi
+label
