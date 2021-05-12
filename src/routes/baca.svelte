@@ -20,7 +20,7 @@
 		{#each komentarnya as item, index}
 			<div class="d-flex">
 				<div class="bagian-gambar flex-shrink-0">
-					<img src="/logo.png" alt="" class="d-block mb-3">
+					<img src={gravatar.url(item.email)} alt="" class="d-block mb-3">
 				</div>
 				<div class="bagian-komentar flex-grow-1">
 					<p class="ps-3">
@@ -83,6 +83,7 @@
 	const {highlight} = pkg
 	import {browser} from '$app/env'
 	// import {highlight} from 'highlight.js'
+	import gravatar from 'gravatar'
 
 	marked.setOptions({
 		breaks: true,
@@ -164,6 +165,8 @@
 		img {
 			width: 40px;
 			height: auto;
+			border-radius: 50%;
+			border: 1px solid $gray;
 		}
 
 		.bagian-komentar {
