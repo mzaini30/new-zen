@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="list-group mb-3">
-				<div class="list-group-item list-group-item-action">Keluar</div>
+				<a class="list-group-item list-group-item-action" href="/">Keluar</a>
 			</div>
 		</div>
 		<div class="col-sm mb-3">
