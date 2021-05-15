@@ -148,7 +148,7 @@
 		width: 100%;
 		height: auto;
 		border-bottom: 1px solid $gray;
-		border-top: 1px solid $gray;
+		// border-top: 1px solid $gray;
 	}
 
 	hr.gray {

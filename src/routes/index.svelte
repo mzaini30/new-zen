@@ -2,7 +2,7 @@
 	<title>Zen</title>
 </svelte:head>
 
-<div class="story d-flex">
+<div class="story d-flex pt-3">
 	{#each postinganAcak as item, index}
 		<a href="/baca?slug={item.slug}" class="link-story">
 			<span class="gambar-story d-block" style="background-image: url('{item.gambar}');"></span>

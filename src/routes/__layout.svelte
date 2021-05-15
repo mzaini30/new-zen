@@ -14,6 +14,7 @@
 	
 	.header {
 		background: white;
+		border-bottom: 1px solid #eaeaea;
 	}
 
 	.instagram {
