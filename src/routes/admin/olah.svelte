@@ -59,6 +59,8 @@
 	import {sql, konten} from '$lib/api'
 	import axios from 'axios'
 	import qs from 'qs'
+	import {tanggal, slug} from 'kumpulan-tools'
+	import ambilGambar from 'ambil-gambar'
 
 	marked.setOptions({
 		breaks: true,
@@ -104,7 +106,17 @@
 		data = data.data
 		datanya = data[0]
 	}
+
 	if ($page.query.get('action') == 'edit') {
 		ambilData()
+	}
+
+	function kosongkan(){
+		if ($page.query.get('action') == 'baru') {
+			datanya = {}
+		}
+	}
+	$: if ($page.query.get('action')) {
+		kosongkan()
 	}
 </script>
