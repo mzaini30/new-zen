@@ -5,7 +5,7 @@
       "handle": "filesystem"
     },
     {
-      "src": "/baca?slug=([^.]+)",
+      "src": "/baca\?slug=([^.]+)",
       "dest": "/api/blog.js"
     }
   ]
