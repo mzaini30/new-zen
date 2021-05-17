@@ -2,16 +2,16 @@ const axios = require('axios')
 const qs = require('qs')
 const {sql, konten} = require('./data')
 module.exports = async (req, res) => {
-	let olah = []
+	let olah
 	async function ambilData(){
 		let data = await axios.post(sql, qs.stringify({
 			id: konten,
 			kunci: 'ambil-slug'
 		}))
 		data = data.data
-		olah = data
+		return data
 	}
-	ambilData()
+	olah = await ambilData()
 	if (olah) {
 		res.writeHead(200, {
 			"Content-Type": "image\/svg+xml"
