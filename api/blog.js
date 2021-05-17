@@ -43,5 +43,5 @@ module.exports = async (req, res) => {
  //        `)
 	// }
  //    res.send(template)
- 	res.send(req.url.split('slug=')[1])
+ 	res.send(req.url)
 }
