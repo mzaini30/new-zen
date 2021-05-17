@@ -107,8 +107,13 @@
 		datanya = data[0]
 	}
 
-	if ($page.query.get('action') == 'edit') {
-		ambilData()
+	function ambil(){
+		if ($page.query.get('action') == 'edit') {
+			ambilData()
+		}
+	}
+	$: if ($page.query.get('action')) {
+		ambil()
 	}
 
 	function kosongkan(){

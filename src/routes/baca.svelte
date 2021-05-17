@@ -104,7 +104,9 @@
 		data = data.data
 		tulisan = data[0]
 	}
-	dapatkanTulisan()
+	$: if ($page.query.get('slug')) {
+		dapatkanTulisan()
+	}
 
 	let komentarnya = [{nama: '', email: '', blog: '', komentar: ''}]
 	let komentarBaru = {nama: '', email: '', blog: '', komentar: ''}
@@ -121,7 +123,9 @@
 		data = data.data
 		komentarnya = data
 	}
-	ambilKomentar()
+	$: if ($page.query.get('slug')) {
+		ambilKomentar()
+	}
 
 	async function kirimKomentar(){
 		const kirim = await axios.post(sql, qs.stringify({
@@ -175,6 +179,11 @@
 				text-decoration: none !important;
 				color: inherit !important;
 			}
+		}
+	}
+	@media (min-width: 768px){
+		.gambar {
+			display: none;
 		}
 	}
 </style>
