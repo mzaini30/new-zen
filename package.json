@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "svelte-kit build && rm build/sw.js && workbox generateSW workbox-config.cjs && node ubahQuery.js",
+    "build": "svelte-kit build && cp build/baca/index.html build/baca/template.html && rm build/sw.js && workbox generateSW workbox-config.cjs && node ubahQuery.js",
     "preview": "svelte-kit preview"
   },
   "devDependencies": {

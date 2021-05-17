@@ -2,7 +2,7 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/baca?slug=(.+)",
+      "source": "/baca",
       "destination": "/api/blog.js"
     }
   ]

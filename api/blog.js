@@ -5,7 +5,7 @@ const {sql, konten} = require('./data')
 module.exports = async (req, res) => {
 	let template
 	async function ambilTemplate(){
-		let data = await axios.get('https://www.catatanzen.my.id/baca')
+		let data = await axios.get('https://www.catatanzen.my.id/baca/template.html')
 		data = data.data
 		return data
 	}
