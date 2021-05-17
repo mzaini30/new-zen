@@ -1,8 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/sepeda?slug=(.*)",
-      "destination": "/api/blog.js"
+      "src": "/sepeda?slug=(.+)",
+      "dest": "/api/blog.js"
     }
   ]
 }
