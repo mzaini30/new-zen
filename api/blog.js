@@ -42,5 +42,5 @@ module.exports = async (req, res) => {
         	<meta property='og:type' content="article">
         `)
 	}
-    res.send(template)
+    res.send('template')
 }
