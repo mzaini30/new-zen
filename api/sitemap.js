@@ -17,6 +17,8 @@ module.exports = async (req, res) => {
 			"Content-Type": "image\/svg+xml"
 		})
 		let isi = `<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9" xmlns:xhtml="http:\/\/www.w3.org\/1999\/xhtml">`
+		isi += sql
+		isi += konten
 		for (x of olah){
 			isi += `
 				<url>
