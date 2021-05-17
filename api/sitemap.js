@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
 		for (x of olah){
 			isi += `
 				<url>
-					<loc>https:\/\/www.catatanzen.my.id\/${x.slug}<\/loc>
+					<loc>https:\/\/www.catatanzen.my.id\/baca?slug=${x.slug}<\/loc>
 				<\/url>
 			`
 		}
