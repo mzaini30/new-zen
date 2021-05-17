@@ -7,5 +7,6 @@ module.exports = {
 		/^utm_/,
 		/^fbclid$/
 	],
-	swDest: 'build/sw.js'
+	swDest: 'build/sw.js',
+	swSrc: 'src-sw.js'
 };
