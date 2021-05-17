@@ -1,12 +1,6 @@
 {
   "version": 2,
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/baca.slug=([^.]+)",
-      "dest": "/api/blog.js"
-    }
+  "rewrites": [
+    {"source": "/baca?slug=:slug", "destination": "/api/blog.js"}
   ]
 }
