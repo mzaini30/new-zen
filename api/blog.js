@@ -28,20 +28,19 @@ module.exports = async (req, res) => {
 	const gambar = olah[0].gambar
 
 	if (olah) {
-		template = template
-            .replace(/<title><\/title>/, `
-            	<title>${judul}</title>
-            	<meta name="description" content="${deskripsi}">
+		template = template.replace(/<title><\/title>/, `
+        	<title>${judul}</title>
+        	<meta name="description" content="${deskripsi}">
 
-            	<meta name="twitter:title" content="${judul}">
-            	<meta name="twitter:description" content="${deskripsi}">
-            	<meta name="twitter:image" content="${gambar}">
+        	<meta name="twitter:title" content="${judul}">
+        	<meta name="twitter:description" content="${deskripsi}">
+        	<meta name="twitter:image" content="${gambar}">
 
-            	<meta property='og:title' content="${judul}">
-            	<meta property='og:description' content="${deskripsi}">
-            	<meta property='og:image' content="${gambar}">
-            	<meta property='og:type' content="article">
-            `)
+        	<meta property='og:title' content="${judul}">
+        	<meta property='og:description' content="${deskripsi}">
+        	<meta property='og:image' content="${gambar}">
+        	<meta property='og:type' content="article">
+        `)
 	}
     res.send(template)
 }
