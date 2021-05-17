@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
 		let data = await axios.post(sql, qs.stringify({
 			id: konten,
 			kunci: 'ambil-meta',
-			slug: req.slug
+			slug: req.url.split('slug=')[1]
 		}))
 		data = data.data
 		return data
