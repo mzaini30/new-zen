@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/sepeda?slug=(.+)",
+      "source": "/sepeda?slug=((.+).*)",
       "destination": "/api/blog.js"
     }
   ]
