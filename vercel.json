@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/baca",
+      "source": "/kucing",
       "destination": "/api/blog.js"
     }
   ]
