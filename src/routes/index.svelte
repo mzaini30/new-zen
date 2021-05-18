@@ -14,35 +14,30 @@
 
 <hr class="m-0 garis">
 
-<div class="konten">
-	{#each postinganBaru as item, index}
-		<a href="/baca?slug={item.slug}" class="d-block">
-			<div class="judul p-3 pb-0 d-flex">
-				<div class="">
-					<img src="/logo.png" alt="" class="icon">
-				</div>
-				<div class="">
-					<p class="caption p-1 ps-2"><strong>{item.judul}</strong></p>
-				</div>
+<div class="wadah">
+	<div class="konten row">
+		{#each postinganBaru as item, index}
+			<div class="col-sm-4">
+				<a href="/baca?slug={item.slug}" class="d-block">
+					<div class="judul p-3 pb-0 d-flex">
+						<div class="">
+							<img src="/logo.png" alt="" class="icon">
+						</div>
+						<div class="">
+							<p class="caption p-1 ps-2"><strong>{item.judul}</strong></p>
+						</div>
+					</div>
+
+					<img src="{item.gambar}" alt="" class="gambar">
+
+					<p class="p-3 pb-0 deskripsi">{item.deskripsi}</p>
+				</a>
 			</div>
-
-			<img src="{item.gambar}" alt="" class="gambar">
-
-			<p class="p-3 pb-0 deskripsi">{item.deskripsi}</p>
-		</a>
-	{/each}
+		{/each}
+	</div>
 </div>
 
 <script>
-	// const listGambar = [
-	// 	{caption: 'Hello World', gambar: '57244247.png', deskripsi: 'Main sepeda'},
-	// 	{caption: 'Bagaimana Kabarmu?', gambar: 'gnukoyvz5xlacuwdymrf.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	// 	{caption: 'Kehidupan yang Baik adalah Kehidupan yang Bagus', gambar: 'medium_logo-transistor.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	// 	{caption: 'Satu Lagi yang Bagus', gambar: 'p3nn57r52krvpdieblta.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	// 	{caption: 'Tebal atau Miring?', gambar: 'QmVyBFY4RAARhZsvmkmy2BCFh8pZE5ENBHBMjV4V3z75m5.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	// 	{caption: 'Excalibur, Suatu Legenda', gambar: 'socialmedia.png', deskripsi: 'Walau memang ada orang yang nggak suka denganmu, kamu tetaplah maju untuk melakukan yang terbaik yang bisa kamu lakukan. Kamu pasti bisa melakukannya kalau kamu mau mencobanya. Coba aja deh.'},
-	// ]
-
 	let postinganBaru = [{judul: '', slug: '', gambar: '', deskripsi: ''}]
 	let postinganAcak = [{judul: '', slug: '', gambar: ''}]
 
@@ -75,6 +70,13 @@
 <style lang="scss">
 	$gray: #eaeaea;
 
+	@media (min-width: 576px){
+		.wadah {
+			width: 80%;
+			margin: auto;
+		}
+	}
+
 	.story {
 		width: 100%;
 		overflow: auto;
@@ -94,13 +96,23 @@
 		background-size: contain;
 	}
 	.teks-story {
-		/*background: blue;*/
 		overflow: hidden;
 		text-overflow: ellipsis;
 		width: $ukuranStory;
 		white-space: nowrap;
 		font-size: 12px;
 		margin-top: .5rem;
+	}
+
+	@media (min-width: 576px){
+		$ukuranStoryBaru: calc(10vw - 1.3rem);
+		.gambar-story {
+			width: $ukuranStoryBaru;
+			height: $ukuranStoryBaru;
+		}
+		.teks-story {
+			width: $ukuranStoryBaru;
+		}
 	}
 
 	@mixin tanpa-scroll($elemen){
@@ -121,10 +133,13 @@
 		background: $warna;
 	}
 
+	$border: 1px solid $gray;
+	$jarak: 1rem !important;
 	.konten {
 		a {
 			text-decoration: none !important;
 			color: inherit !important;
+			// background: blue;
 		}
 		.judul {
 			.icon {
@@ -135,14 +150,13 @@
 			.caption {
 				text-overflow: ellipsis;
 				white-space: nowrap;
-				// background: green;
 				overflow: hidden;
 				width: calc(100vw - 80px);
+				// width: inherit;
 			}
 		}
 
 		.gambar {
-			$border: 1px solid $gray;
 			width: 100%;
 			height: auto;
 			border-top: $border;
@@ -154,6 +168,19 @@
 			-webkit-line-clamp: 3;
 			-webkit-box-orient: vertical;  
 			overflow: hidden;
+		}
+	}
+
+	@media (min-width: 576px){
+		.konten .judul .caption {
+			width: inherit;
+		}
+		.konten a {
+			border: $border;
+			margin-bottom: $jarak;
+		}
+		.garis {
+			margin-bottom: $jarak;
 		}
 	}
 </style>

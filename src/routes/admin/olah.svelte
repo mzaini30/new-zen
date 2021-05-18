@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm">
-		<form action="">
+		<form action="" on:submit|preventDefault={submit}>
 			<div class="mb-3">
 				<input type="text" class="form-control" placeholder="Judul" bind:value={datanya.judul} required>
 			</div>
@@ -17,7 +17,7 @@
 							<input type="submit" class="btn btn-warning" value="Update">
 						</div>
 						<div class="">
-							<div class="btn btn-danger">Hapus</div>
+							<div class="btn btn-danger" on:click={aksiHapus}>Hapus</div>
 						</div>
 					</div>
 				{:else}
@@ -50,6 +50,7 @@
 
 <script>
 	import {page} from '$app/stores'
+	import {goto} from '$app/navigation'
 	import {browser} from '$app/env'
 	import {onMount} from 'svelte'
 	import marked from 'marked'
@@ -123,5 +124,53 @@
 	}
 	$: if ($page.query.get('action')) {
 		kosongkan()
+	}
+
+	async function submit(){
+		if ($page.query.get('action') == 'baru') {
+			const slugnya = slug(datanya.judul)
+			const data = await axios.post(sql, qs.stringify({
+				id: konten,
+				kunci: 'tambah',
+				...datanya, // judul, label, isi
+				slug: slugnya,
+				gambar: ambilGambar(datanya.isi),
+				deskripsi: datanya.isi.slice(0, 190).replace(/"/g, ''), // 190
+				tanggal: tanggal()
+			}))
+			if (data) {
+				await goto(`/admin/olah?action=edit&slug=${slugnya}`)
+			}
+		} else {
+			const data = await axios.post(sql, qs.stringify({
+				id: konten,
+				kunci: 'ubah',
+				...datanya, // judul, label, isi
+				gambar: ambilGambar(datanya.isi),
+				deskripsi: datanya.isi.slice(0, 190).replace(/"/g, ''), // 190
+				slug: $page.query.get('slug'),
+				username: localStorage.username,
+				password: localStorage.password
+			}))
+			if (data) {
+				alert('Data Sudah Diupdate')
+			}
+		}
+	}
+
+	async function aksiHapus(){
+		const tanya = confirm('Hapus Kah?')
+		if (tanya) {
+			const data = await axios.post(sql, qs.stringify({
+				id: konten,
+				kunci: 'hapus',
+				slug: $page.query.get('slug'),
+				username: localStorage.username,
+				password: localStorage.password
+			}))
+			if (data) {
+				await goto('/admin')
+			}
+		}
 	}
 </script>
