@@ -173,7 +173,8 @@
 
 	@media (min-width: 576px){
 		.konten .judul .caption {
-			width: inherit;
+			// width: calc(20vw - 0px);
+			width: 20vw;
 		}
 		.konten a {
 			border: $border;
