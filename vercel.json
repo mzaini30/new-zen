@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/sepeda",
+      "source": "/baca",
       "destination": "/api/blog"
     }
   ]
