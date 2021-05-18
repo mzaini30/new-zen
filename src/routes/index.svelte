@@ -17,7 +17,7 @@
 <div class="wadah">
 	<div class="konten row">
 		{#each postinganBaru as item, index}
-			<div class="col-sm-4">
+			<div class="col-sm-4 kartu">
 				<a href="/baca?slug={item.slug}" class="d-block">
 					<div class="judul p-3 pb-0 d-flex">
 						<div class="">
@@ -74,6 +74,15 @@
 		.wadah {
 			width: 80%;
 			margin: auto;
+		}
+	}
+
+	@media (max-width: 576px){
+		.konten.row {
+			margin: 0;
+			.kartu {
+				padding: 0;
+			}
 		}
 	}
 
