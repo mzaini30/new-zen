@@ -5,7 +5,15 @@
 				<input type="text" class="form-control" placeholder="Judul" bind:value={datanya.judul} required>
 			</div>
 			<div class="mb-3">
-				<input type="text" bind:value={datanya.label} class="form-control" placeholder="Label" required>
+				<input type="text" bind:value={datanya.label} class="form-control" placeholder="Label" required list="label">
+
+				<datalist id="label">
+					{#if semuaLabel}
+						{#each semuaLabel as item, index}
+							<option value={item.label}></option>
+						{/each}
+					{/if}
+				</datalist>
 			</div>
 			<div class="mb-3">
 				<textarea name="" id="" bind:this={isian} bind:value={datanya.isi} cols="30" rows="10" class="form-control" placeholder="Isinya" required></textarea>
@@ -173,4 +181,18 @@
 			}
 		}
 	}
+
+	let semuaLabel = []
+	async function dapatkanLabel(){
+		let data = await axios.post(sql, qs.stringify({
+			id: konten,
+			kunci: 'semua-label'
+		}))
+		data = data.data
+		semuaLabel = data
+		// console.log(JSON.stringify(data))
+		// [{"label":"javascript"}]
+	}
+	// dapatkanLabel()
+	$: $page.query.get('action') && dapatkanLabel()
 </script>
