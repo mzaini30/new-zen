@@ -48,6 +48,10 @@
 		height: 300px;
 		overflow: auto;
 		border: 1px solid #eaeaea;
+		:global(img){
+			display: block;
+			margin: auto;
+		}
 	}
 </style>
 
