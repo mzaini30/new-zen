@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
         	<meta name="twitter:title" content="${judul}">
         	<meta name="twitter:description" content="${deskripsi}">
         	<meta name="twitter:image" content="${gambar}">
+        	<meta content='summary_large_image' name='twitter:card'/>
 
         	<meta property='og:title' content="${judul}">
         	<meta property='og:description' content="${deskripsi}">
