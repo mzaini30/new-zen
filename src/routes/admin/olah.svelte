@@ -145,6 +145,7 @@
 				id: konten,
 				kunci: 'tambah',
 				...datanya, // judul, label, isi
+				html: yt(marked(datanya.isi)),
 				slug: slugnya,
 				gambar: ambilGambar(datanya.isi),
 				deskripsi: datanya.isi.slice(0, 190).replace(/"/g, ''), // 190
@@ -158,6 +159,7 @@
 				id: konten,
 				kunci: 'ubah',
 				...datanya, // judul, label, isi
+				html: yt(marked(datanya.isi)),
 				gambar: ambilGambar(datanya.isi),
 				deskripsi: datanya.isi.slice(0, 190).replace(/"/g, ''), // 190
 				slug: $page.query.get('slug'),

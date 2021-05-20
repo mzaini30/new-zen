@@ -9,7 +9,7 @@
 	<h1>{tulisan.judul}</h1>
 	<p><em>{tulisan.tanggal}</em></p>
 	<div class="isi">
-		{@html yt(marked(tulisan.isi))}
+		{@html tulisan.html}
 	</div>
 </div>
 
@@ -76,29 +76,29 @@
 	import qs from 'qs'
 	import {tanggal, slug} from 'kumpulan-tools'
 	import yt from 'embed-youtube'
-	import marked from 'marked'
+	// import marked from 'marked'
 	import {page} from '$app/stores'
 	import {sql, konten, komentar as idKomentar} from '$lib/api'
-	import pkg from 'highlight.js'
-	const {highlight} = pkg
+	// import pkg from 'highlight.js'
+	// const {highlight} = pkg
 	import {browser} from '$app/env'
 	// import {highlight} from 'highlight.js'
 	import gravatar from 'gravatar'
 
-	marked.setOptions({
-		breaks: true,
-		highlight: function(code, lang){
-			if (lang == ""){
-				lang = "javascript"
-			}
-			return highlight(lang, code).value
-		}
-	})
+	// marked.setOptions({
+	// 	breaks: true,
+	// 	highlight: function(code, lang){
+	// 		if (lang == ""){
+	// 			lang = "javascript"
+	// 		}
+	// 		return highlight(lang, code).value
+	// 	}
+	// })
 
 	async function dapatkanTulisan(){
 		let data = await axios.post(sql, qs.stringify({
 			id: konten,
-			kunci: 'ambil',
+			kunci: 'ambil-html',
 			slug: $page.query.get('slug')
 		}))
 		data = data.data
