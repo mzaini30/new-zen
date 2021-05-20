@@ -70,7 +70,7 @@
 </div>
 
 <script>
-	let tulisan = {judul: '', isi: '', tanggal: '', gambar: ''}
+	let tulisan = {judul: '', html: '', tanggal: '', gambar: ''}
 
 	import axios from 'axios'
 	import qs from 'qs'
