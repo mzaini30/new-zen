@@ -67,8 +67,8 @@
 	import {onMount} from 'svelte'
 	import marked from 'marked'
 	import yt from 'embed-youtube'
-	import pkg from 'highlight.js'
-	const {highlight} = pkg
+	// import pkg from 'highlight.js'
+	// const {highlight} = pkg
 	import {sql, konten} from '$lib/api'
 	import axios from 'axios'
 	import qs from 'qs'
@@ -77,12 +77,12 @@
 
 	marked.setOptions({
 		breaks: true,
-		highlight: function(code, lang){
-			if (lang == ""){
-				lang = "javascript"
-			}
-			return highlight(lang, code).value
-		}
+		// highlight: function(code, lang){
+		// 	if (lang == ""){
+		// 		lang = "javascript"
+		// 	}
+		// 	return highlight(lang, code).value
+		// }
 	})
 
 	let isian
