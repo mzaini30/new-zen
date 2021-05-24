@@ -67,8 +67,8 @@
 	import {onMount} from 'svelte'
 	import marked from 'marked'
 	import yt from 'embed-youtube'
-	// import pkg from 'highlight.js'
-	// const {highlight} = pkg
+	import pkg from 'highlight.js'
+	const {highlight} = pkg
 	import {sql, konten} from '$lib/api'
 	import axios from 'axios'
 	import qs from 'qs'
@@ -139,6 +139,16 @@
 	}
 
 	async function submit(){
+		const opsi = {
+			breaks: true,
+			highlight: function(code, lang){
+				if (lang == ""){
+					lang = "javascript"
+				}
+				return highlight(lang, code).value
+			}
+		}
+		marked.setOptions(opsi)
 		if ($page.query.get('action') == 'baru') {
 			const slugnya = slug(datanya.judul)
 			const data = await axios.post(sql, qs.stringify({
@@ -152,6 +162,12 @@
 				tanggal: tanggal()
 			}))
 			if (data) {
+				marked.setOptions({
+					breaks: true,
+					highlight: function(code, lang){
+						return code.value
+					}
+				})
 				await goto(`/admin/olah?action=edit&slug=${slugnya}`)
 			}
 		} else {
@@ -168,6 +184,12 @@
 			}))
 			if (data) {
 				alert('Data Sudah Diupdate')
+				marked.setOptions({
+					breaks: true,
+					highlight: function(code, lang){
+						return code.value
+					}
+				})
 			}
 		}
 	}
