@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/logo.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+		<script src="/registerSW.js"></script>
+		<link rel="manifest" href="/manifest.json">
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1JX0S4GPW"></script>
+	    <script>
+	      window.dataLayer = window.dataLayer || [];
+	      function gtag(){dataLayer.push(arguments);}
+	      gtag('js', new Date());
+
+	      gtag('config', 'G-C1JX0S4GPW');
+	    </script>
+	    <script>var id = "c2d4924ab914ef4f70def555618625a7f4aac70f";</script>
+    	<script type="text/javascript" src="https://api.sosiago.id/js/tracking.js"></script>
+		<style>
+			* {
+				word-wrap: break-word;
+			}
+
+			img {
+				height: auto;
+				max-width: 100%;
+			}
+		</style>
+		<title>Olah Tulisan</title><link rel="stylesheet" href="/agate.min.css" data-svelte="svelte-n2kky3">
+
+		
+
+		<link rel="modulepreload" href="/./_app/start-1b7c88a8.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-84ea97d9.js">
+		<link rel="modulepreload" href="/./_app/chunks/singletons-bb9012b7.js">
+		<link rel="modulepreload" href="/./_app/pages/admin/__layout.reset.svelte-30dcd9b8.js">
+		<link rel="modulepreload" href="/./_app/chunks/navigation-20968cc5.js">
+		<link rel="modulepreload" href="/./_app/chunks/api-b46f828b.js">
+		<link rel="modulepreload" href="/./_app/pages/admin/olah.svelte-903edd77.js">
+		<link rel="modulepreload" href="/./_app/chunks/stores-b44de241.js">
+		<link rel="stylesheet" href="/./_app/assets/start-a8cd1609.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/admin/olah.svelte-5ad9ff52.css">
+
+		<script type="module">
+			import { start } from "/./_app/start-1b7c88a8.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":"/."},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/./_app/pages/admin/__layout.reset.svelte-30dcd9b8.js"),
+						import("/./_app/pages/admin/olah.svelte-903edd77.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/admin/olah",
+						query: new URLSearchParams(location.search),
+						params: {}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="container-fluid pt-3"><div class="row"><div class="col-sm-2"><div class="list-group mb-3"><a class="list-group-item list-group-item-action" href="/">Beranda</a></div>
+
+	<div class="list-group mb-3"><div class="list-group-item">POSTINGAN</div>
+		<a href="/admin/olah?action=baru" class="list-group-item list-group-item-action">Baru</a>
+		<a href="/admin" class="list-group-item list-group-item-action">Semua</a></div>
+
+	<div class="list-group mb-3"><a class="list-group-item list-group-item-action" href="/">Keluar</a></div></div>
+<div class="col-sm mb-3"><div class="row"><div class="col-sm"><form action=""><div class="mb-3"><input type="text" class="form-control" placeholder="Judul" required></div>
+	<div class="mb-3"><input type="text" class="form-control" placeholder="Label" required list="label">
+
+		<datalist id="label"></datalist></div>
+	<div class="mb-3"><textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Isinya" required></textarea></div>
+	<div class="mb-3"><input type="submit" class="btn btn-success" value="Kirim"></div></form></div>
+	<div class="col-sm"><div class="preview p-3 svelte-pocj7z"></div></div></div>
+
+
+
+</div></div>
+</div>
+
+
+
+	
+</div>
+	</body>
+</html>
