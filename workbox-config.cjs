@@ -4,4 +4,4 @@ module.exports = {
 		'**/*.*'
 	],
 	swDest: 'build/sw.js'
-};
+}
